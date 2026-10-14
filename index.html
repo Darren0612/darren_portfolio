@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Darren Gunawan | Data Analyst Portfolio</title>
+  <meta name="description" content="Portfolio data analyst Darren Gunawan: analisis penjualan e-commerce, funnel dan cohort analysis dengan Python dan Power BI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <div class="wrap">
+      <a class="brand" href="index.html">Darren Gunawan</a>
+      <ul class="nav-links">
+        <li><a href="#project">Project</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="hero-intro">
+        <h1>Darren Gunawan</h1>
+        <p class="hero-role">Mahasiswa Computer Science di BINUS dan Business Operations Intern di sebuah toko online. Saya mengolah data pesanan dan penjualan menjadi keputusan bisnis yang bisa langsung dijalankan.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#project">Lihat project</a>
+          <a class="btn btn-ghost" href="files/Darren_Gunawan_CV.pdf">Unduh CV</a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/darren-gunawan-b034a9208/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <figure class="hero-figure">
+        <svg viewBox="0 0 480 220" role="img" aria-label="Grafik batang jumlah pesanan per jam. Pesanan paling banyak antara pukul 09.00 dan 15.00, puncaknya 275 pesanan pukul 10.00.">
+          <line class="baseline" x1="0" y1="190.5" x2="480" y2="190.5"/>
+          <rect class="base" x="3" y="167.7" width="14" height="22.3" rx="2"><title>00.00: 36 pesanan</title></rect>
+          <rect class="base" x="23" y="180.1" width="14" height="9.9" rx="2"><title>01.00: 16 pesanan</title></rect>
+          <rect class="base" x="43" y="177.0" width="14" height="13.0" rx="2"><title>02.00: 21 pesanan</title></rect>
+          <rect class="base" x="63" y="182.0" width="14" height="8.0" rx="2"><title>03.00: 13 pesanan</title></rect>
+          <rect class="base" x="83" y="180.7" width="14" height="9.3" rx="2"><title>04.00: 15 pesanan</title></rect>
+          <rect class="base" x="103" y="164.0" width="14" height="26.0" rx="2"><title>05.00: 42 pesanan</title></rect>
+          <rect class="base" x="123" y="146.7" width="14" height="43.3" rx="2"><title>06.00: 70 pesanan</title></rect>
+          <rect class="base" x="143" y="120.1" width="14" height="69.9" rx="2"><title>07.00: 113 pesanan</title></rect>
+          <rect class="base" x="163" y="71.3" width="14" height="118.7" rx="2"><title>08.00: 192 pesanan</title></rect>
+          <rect class="peak" x="183" y="38.5" width="14" height="151.5" rx="2"><title>09.00: 245 pesanan</title></rect>
+          <rect class="peak" x="203" y="20.0" width="14" height="170.0" rx="2"><title>10.00: 275 pesanan</title></rect>
+          <rect class="peak" x="223" y="39.2" width="14" height="150.8" rx="2"><title>11.00: 244 pesanan</title></rect>
+          <rect class="peak" x="243" y="37.9" width="14" height="152.1" rx="2"><title>12.00: 246 pesanan</title></rect>
+          <rect class="peak" x="263" y="49.7" width="14" height="140.3" rx="2"><title>13.00: 227 pesanan</title></rect>
+          <rect class="peak" x="283" y="58.3" width="14" height="131.7" rx="2"><title>14.00: 213 pesanan</title></rect>
+          <rect class="peak" x="303" y="41.0" width="14" height="149.0" rx="2"><title>15.00: 241 pesanan</title></rect>
+          <rect class="base" x="323" y="126.3" width="14" height="63.7" rx="2"><title>16.00: 103 pesanan</title></rect>
+          <rect class="base" x="343" y="133.7" width="14" height="56.3" rx="2"><title>17.00: 91 pesanan</title></rect>
+          <rect class="base" x="363" y="153.5" width="14" height="36.5" rx="2"><title>18.00: 59 pesanan</title></rect>
+          <rect class="base" x="383" y="154.1" width="14" height="35.9" rx="2"><title>19.00: 58 pesanan</title></rect>
+          <rect class="base" x="403" y="144.3" width="14" height="45.7" rx="2"><title>20.00: 74 pesanan</title></rect>
+          <rect class="base" x="423" y="138.1" width="14" height="51.9" rx="2"><title>21.00: 84 pesanan</title></rect>
+          <rect class="base" x="443" y="158.5" width="14" height="31.5" rx="2"><title>22.00: 51 pesanan</title></rect>
+          <rect class="base" x="463" y="163.4" width="14" height="26.6" rx="2"><title>23.00: 43 pesanan</title></rect>
+          <text class="axis" x="10" y="212" text-anchor="middle">00</text>
+          <text class="axis" x="130" y="212" text-anchor="middle">06</text>
+          <text class="axis" x="250" y="212" text-anchor="middle">12</text>
+          <text class="axis" x="370" y="212" text-anchor="middle">18</text>
+          <text class="axis" x="470" y="212" text-anchor="middle">23</text>
+        </svg>
+        <figcaption><strong>Pesanan paling ramai pukul 09.00–15.00.</strong> Jumlah pesanan per jam dari 2.772 pesanan Shopee, Juli–September 2026, diambil dari project analisis penjualan di bawah.</figcaption>
+      </figure>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="project" aria-labelledby="project-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="project-title">Project</h2>
+          <p>Setiap project dikerjakan end-to-end: dari data mentah, cleaning, analisis di Python, sampai dashboard Power BI dan rekomendasi bisnis.</p>
+        </div>
+
+        <article class="project">
+          <a class="project-shot" href="projects/shopee-sales.html">
+            <img src="assets/img/shopee/dashboard-sales-overview.png" alt="Dashboard Power BI Shopee Sales Overview berisi KPI, pesanan per hari dan per jam, heatmap, serta tren revenue bulanan" loading="lazy">
+          </a>
+          <div class="project-body">
+            <h3>Analisis penjualan toko perlengkapan rumah tangga di Shopee</h3>
+            <p class="project-meta">Data asli 2.772 pesanan, Juli–September 2026</p>
+            <p>Menganalisis data pesanan sebuah toko di Bandung untuk menjawab produk apa yang mendorong penjualan, kapan pembeli paling aktif, dan seberapa sering mereka kembali.</p>
+            <ul class="project-results">
+              <li>Revenue stabil ±Rp140 juta/bulan, tetapi jumlah pesanan turun 16%.</li>
+              <li>Container Box menyumbang 37% revenue; 18% produk menghasilkan 80% revenue.</li>
+              <li>Hanya 9% pembeli yang kembali, tetapi mereka menyumbang 33,5% revenue.</li>
+            </ul>
+            <ul class="tools" aria-label="Tools">
+              <li>Python</li><li>pandas</li><li>Matplotlib</li><li>Power BI</li><li>DAX</li>
+            </ul>
+            <a class="read-more" href="projects/shopee-sales.html">Baca studi kasus</a>
+          </div>
+        </article>
+
+        <article class="project">
+          <a class="project-shot" href="projects/funnel-cohort.html">
+            <img src="assets/img/funnel-cohort/dashboard-funnel.png" alt="Dashboard Power BI funnel analysis education startup dengan funnel chart, conversion per segmen, dan matrix drop-off" loading="lazy">
+          </a>
+          <div class="project-body">
+            <h3>Funnel dan cohort analysis: education startup dan fintech</h3>
+            <p class="project-meta">Assignment Bootcamp Dibimbing, 630.338 leads dan 22.466 transaksi</p>
+            <p>Mencari titik bocor di funnel pendaftaran siswa dan mengukur seberapa lama user fintech bertahan setelah transaksi pertama.</p>
+            <ul class="project-results">
+              <li>Hanya 28,3% leads menjadi user; 51–53% peserta free trial KG dan High School tidak mendaftar.</li>
+              <li>27% user fintech berhenti bertransaksi setelah bulan pertama.</li>
+              <li>10% user teratas menyumbang 83% revenue fintech.</li>
+            </ul>
+            <ul class="tools" aria-label="Tools">
+              <li>Python</li><li>Google Colab</li><li>Power BI</li><li>DAX</li>
+            </ul>
+            <a class="read-more" href="projects/funnel-cohort.html">Baca studi kasus</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="tentang" aria-labelledby="tentang-title">
+      <div class="wrap about-grid">
+        <div class="about-text">
+          <h2 id="tentang-title">Tentang saya</h2>
+          <p>Saya mahasiswa Computer Science di Bina Nusantara University yang tertarik pada data analytics dan business intelligence. Saat ini saya juga magang sebagai Business Operations Intern di sebuah toko online, mengurus operasional pesanan harian dan menganalisis performa penjualan di marketplace.</p>
+          <p>Pengalaman langsung di operasional e-commerce membuat saya terbiasa melihat data dari sisi bisnis: angka yang dianalisis harus berujung pada keputusan, seperti produk mana yang perlu dijaga stoknya atau kapan tim perlu bersiap menghadapi lonjakan pesanan.</p>
+          <p>Saya sedang memperdalam Python, SQL, dan Power BI melalui Bootcamp Data Analytics &amp; Business Intelligence di Dibimbing, dan mencari kesempatan sebagai Data Analyst atau BI Analyst.</p>
+        </div>
+
+        <dl class="facts">
+          <div>
+            <dt>Bina Nusantara University</dt>
+            <dd>S1 Computer Science, IPK 3,59/4,00<br><span class="when">Agustus 2025 – sekarang</span></dd>
+          </div>
+          <div>
+            <dt>Dibimbing.id</dt>
+            <dd>Bootcamp Data Analytics &amp; Business Intelligence<br><span class="when">Juli 2026 – sekarang</span></dd>
+          </div>
+          <div>
+            <dt>TOKOKU.Onlineshop</dt>
+            <dd>Business Operations Intern: mendukung ±712 pesanan selesai per bulan dan menjaga tingkat pembatalan/retur di ±1,7%<br><span class="when">Maret 2026 – sekarang</span></dd>
+          </div>
+          <div>
+            <dt>Penghargaan</dt>
+            <dd>Semifinalis IYREF ITB 2026, Juara 2 Ekuitas Accounting Day 2024, Honorable Mention Accounting Fair UPI 2024, Juara 1 Taruna Bakti Social Innovation Award 2024</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section" id="keahlian" aria-labelledby="keahlian-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="keahlian-title">Keahlian</h2>
+        </div>
+        <div class="skills">
+          <div>
+            <h3>Cleaning &amp; persiapan data</h3>
+            <ul>
+              <li>Excel: Power Query, PivotTable</li>
+              <li>Python: missing value, outlier, encoding</li>
+              <li>Anonimisasi data pribadi</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Analisis</h3>
+            <ul>
+              <li>pandas: grouping, merge, datetime, feature engineering</li>
+              <li>SQL</li>
+              <li>Statistik deskriptif, t-test, ANOVA</li>
+              <li>Funnel, cohort, dan Pareto analysis</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Visualisasi &amp; reporting</h3>
+            <ul>
+              <li>Power BI dan DAX</li>
+              <li>Tableau</li>
+              <li>Matplotlib, Seaborn</li>
+              <li>Dashboard Excel dan KPI tracking</li>
+            </ul>
+          </div>
+          <div>
+            <h3>Cara kerja</h3>
+            <ul>
+              <li>Data storytelling</li>
+              <li>Komunikasi dengan stakeholder</li>
+              <li>Problem solving</li>
+              <li>Bahasa Indonesia (native), Inggris (intermediate)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kontak" aria-labelledby="kontak-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="kontak-title">Kontak</h2>
+          <p>Terbuka untuk posisi Data Analyst, BI Analyst, atau magang di bidang data. Berdomisili di Bandung.</p>
+        </div>
+        <ul class="contact-list">
+          <li><span>Email</span> <a href="mailto:darrengunawan0612@gmail.com">darrengunawan0612@gmail.com</a></li>
+          <li><span>LinkedIn</span> <a href="https://www.linkedin.com/in/darren-gunawan-b034a9208/" target="_blank" rel="noopener">linkedin.com/in/darren-gunawan-b034a9208</a></li>
+          <li><span>GitHub</span> <a href="https://github.com/USERNAME" target="_blank" rel="noopener">github.com/USERNAME</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">© 2026 Darren Gunawan. Dibuat dengan HTML dan CSS, di-host di GitHub Pages.</div>
+  </footer>
+
+</body>
+</html>

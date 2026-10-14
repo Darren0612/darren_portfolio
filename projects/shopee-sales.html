@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analisis Penjualan Shopee | Darren Gunawan</title>
+  <meta name="description" content="Studi kasus analisis penjualan toko perlengkapan rumah tangga di Shopee dengan Python dan Power BI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Darren Gunawan</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#project">Project</a></li>
+        <li><a href="../index.html#tentang">Tentang</a></li>
+        <li><a href="../index.html#kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="case-head">
+    <div class="wrap">
+      <a class="back" href="../index.html#project">Kembali ke semua project</a>
+      <h1>Analisis penjualan toko perlengkapan rumah tangga di Shopee</h1>
+      <p class="case-lead">Menganalisis 2.772 pesanan selesai dari Juli sampai September 2026 untuk menemukan produk andalan, waktu belanja tersibuk, profil pembeli, dan peluang meningkatkan pembelian ulang.</p>
+      <dl class="case-meta">
+        <div><dt>Peran</dt><dd>Data analyst (project mandiri)</dd></div>
+        <div><dt>Data</dt><dd>3 file ekspor Shopee, 3.652 baris</dd></div>
+        <div><dt>Tools</dt><dd>Python, pandas, Power BI</dd></div>
+        <div><dt>Periode</dt><dd>Juli–September 2026</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="wrap case-layout">
+    <nav class="toc" aria-label="Isi halaman">
+      <p>Isi</p>
+      <ol>
+        <li><a href="#ringkasan">Ringkasan</a></li>
+        <li><a href="#konteks">Konteks dan masalah</a></li>
+        <li><a href="#pertanyaan">Pertanyaan analisis</a></li>
+        <li><a href="#data">Data dan persiapan</a></li>
+        <li><a href="#temuan">Temuan</a></li>
+        <li><a href="#dashboard">Dashboard</a></li>
+        <li><a href="#rekomendasi">Rekomendasi</a></li>
+        <li><a href="#keterbatasan">Keterbatasan</a></li>
+        <li><a href="#file">File project</a></li>
+      </ol>
+    </nav>
+
+    <article class="article">
+      <section id="ringkasan" class="summary">
+        <h2>Ringkasan</h2>
+        <ul>
+          <li>Revenue produk <span class="num">Rp420,3 juta</span> dari <span class="num">2.772</span> pesanan, dengan nilai rata-rata pesanan (AOV) <span class="num">Rp151.609</span>.</li>
+          <li>Revenue stabil, tetapi jumlah pesanan turun 16% dari Juli ke September. Revenue tertahan karena AOV naik 14,8%.</li>
+          <li>Container Box menyumbang 37% revenue, dan 9% pembeli yang kembali berbelanja menyumbang 33,5% revenue.</li>
+        </ul>
+      </section>
+
+      <section id="konteks">
+        <h2>Konteks dan masalah</h2>
+        <p>Toko ini menjual perlengkapan rumah tangga seperti container box, keranjang, peralatan dapur, dan alat kebersihan melalui Shopee, dengan gudang di Bandung. Sebagian besar pesanan dikirim dengan kurir instan di hari yang sama.</p>
+        <p>Pemilik toko belum memiliki gambaran berbasis data tentang produk yang mendorong penjualan, waktu pembeli paling aktif, dan seberapa sering pembeli kembali. Akibatnya, keputusan stok, jadwal operasional, dan promosi masih dibuat berdasarkan perkiraan.</p>
+      </section>
+
+      <section id="pertanyaan">
+        <h2>Pertanyaan analisis</h2>
+        <ol>
+          <li>Bagaimana performa penjualan per bulan (revenue, jumlah pesanan, AOV)?</li>
+          <li>Kapan (hari dan jam) pesanan paling ramai?</li>
+          <li>Kategori dan produk apa yang menyumbang revenue terbesar?</li>
+          <li>Dari mana pembeli berasal, dan bagaimana mereka membayar serta memilih pengiriman?</li>
+          <li>Seberapa banyak pembeli yang kembali berbelanja?</li>
+          <li>Seberapa besar retur, dan kategori apa yang paling sering diretur?</li>
+        </ol>
+      </section>
+
+      <section id="data">
+        <h2>Data dan persiapan</h2>
+        <p>Data berasal dari ekspor pesanan berstatus <i>Selesai</i> di Shopee Seller Centre: tiga file Excel (satu per bulan) dengan 51 kolom. Satu baris mewakili satu produk dalam sebuah pesanan.</p>
+        <div class="table-scroll">
+          <table class="data-table">
+            <tr><th>Item</th><th>Jumlah</th></tr>
+            <tr><td>Baris produk</td><td class="num">3.652</td></tr>
+            <tr><td>Pesanan unik</td><td class="num">2.772</td></tr>
+            <tr><td>Pembeli unik</td><td class="num">2.446</td></tr>
+            <tr><td>Produk unik</td><td class="num">574</td></tr>
+          </table>
+        </div>
+        <h3>Langkah persiapan</h3>
+        <ol>
+          <li><b>Anonimisasi.</b> Nama, nomor telepon, alamat, nomor resi, dan catatan pembeli dihapus. Username dan nomor pesanan diganti ID anonim (CUST_0001, ORD_00001) sebelum data ditampilkan.</li>
+          <li><b>Konversi angka.</b> Kolom uang tersimpan sebagai teks dengan titik pemisah ribuan ("109.000"), sehingga dibaca sebagai teks lalu dikonversi ke angka.</li>
+          <li><b>Validasi.</b> Tidak ada duplikat, subtotal konsisten dengan harga × jumlah, dan semua tanggal terbaca.</li>
+          <li><b>Feature engineering.</b> Menambahkan bulan, hari, jam, 13 kategori produk (dari kata kunci nama produk), jenis pengiriman, kelompok pembayaran, dan wilayah.</li>
+          <li><b>Tabel level pesanan.</b> Kolom seperti total pembayaran dan voucher bernilai per pesanan, sehingga diringkas ke tabel terpisah agar tidak terhitung dobel.</li>
+        </ol>
+      </section>
+
+      <section id="temuan">
+        <h2>Temuan</h2>
+
+        <div class="finding">
+          <p class="q">Pertanyaan 1: performa bulanan</p>
+          <h3>Revenue stabil, tetapi jumlah pesanan terus turun</h3>
+          <figure class="chart">
+            <img src="../assets/img/shopee/q1-penjualan-bulanan.png" alt="Grafik revenue per bulan (Rp142,0 juta, Rp140,8 juta, Rp137,5 juta) dengan garis jumlah pesanan 1.008, 914, 850, serta tren revenue harian" loading="lazy">
+            <figcaption>Revenue produk per bulan dan jumlah pesanan (kiri), revenue harian dengan rata-rata 7 hari (kanan).</figcaption>
+          </figure>
+          <p>Revenue hanya turun 0,9% di Agustus dan 2,4% di September, tetapi jumlah pesanan turun dari 1.008 menjadi 850. Revenue bertahan karena AOV naik dari Rp140.888 ke Rp161.728. Pembeli yang tersisa berbelanja lebih besar, tetapi toko kehilangan jumlah transaksi.</p>
+        </div>
+
+        <div class="finding">
+          <p class="q">Pertanyaan 2: waktu tersibuk</p>
+          <h3>Pesanan memuncak pukul 09.00–15.00, Sabtu paling ramai</h3>
+          <figure class="chart">
+            <img src="../assets/img/shopee/q2-hari-jam.png" alt="Grafik rata-rata pesanan per hari, Sabtu tertinggi sekitar 38 dan Minggu terendah sekitar 16, serta total pesanan per jam dengan puncak pukul 10.00" loading="lazy">
+          </figure>
+          <figure class="chart">
+            <img src="../assets/img/shopee/q2-heatmap.png" alt="Heatmap jumlah pesanan berdasarkan hari dan jam" loading="lazy">
+            <figcaption>Heatmap pesanan per hari dan jam.</figcaption>
+          </figure>
+          <p>71,6% pesanan masuk pukul 08.00–16.59 dengan puncak pukul 10.00. Sabtu rata-rata 38 pesanan per hari, sedangkan Minggu hanya 16. Pola ini sejalan dengan pengiriman instan yang bergantung pada jam operasional toko.</p>
+        </div>
+
+        <div class="finding">
+          <p class="q">Pertanyaan 3: produk dan kategori</p>
+          <h3>Container Box adalah penggerak utama revenue</h3>
+          <figure class="chart">
+            <img src="../assets/img/shopee/q3-kategori.png" alt="Grafik revenue per kategori: Container Box 37,2%, Peralatan Dapur 12,6%, Keranjang 12,5%" loading="lazy">
+          </figure>
+          <figure class="chart">
+            <img src="../assets/img/shopee/q3-top-produk.png" alt="Top 10 produk berdasarkan revenue, didominasi container box Shinpo" loading="lazy">
+          </figure>
+          <p>Container Box menyumbang 37,2% revenue dari hanya 38 produk, dan 6 dari 10 produk terlaris adalah container box. Penjualan mengikuti pola Pareto: 98 dari 557 produk (17,6%) menghasilkan 80% revenue. Karet seal tabung gas terjual paling banyak secara unit (1.675 unit) tetapi hanya 0,4% revenue, sehingga perannya lebih sebagai produk tambahan murah.</p>
+        </div>
+
+        <div class="finding">
+          <p class="q">Pertanyaan 4: profil pembeli</p>
+          <h3>Pembeli sangat lokal dan mengandalkan voucher Shopee</h3>
+          <figure class="chart">
+            <img src="../assets/img/shopee/q4-pembeli.png" alt="Grafik wilayah pembeli (Bandung Raya 88,7%), jenis pengiriman (Instant 84,3%), dan metode pembayaran" loading="lazy">
+          </figure>
+          <p>88,7% pesanan berasal dari Bandung Raya dan 84,3% memakai pengiriman instan. Metode pembayaran tersebar: Online Payment 29,6%, ShopeePay 26,7%, SPayLater 17,7%, dan QRIS 15,3%. Sebanyak 82,3% pesanan memakai voucher dari Shopee, sedangkan toko belum pernah memakai voucher sendiri.</p>
+        </div>
+
+        <div class="finding">
+          <p class="q">Pertanyaan 5: pembelian ulang</p>
+          <h3>Sedikit pembeli yang kembali, tetapi nilainya besar</h3>
+          <figure class="chart">
+            <img src="../assets/img/shopee/q5-repeat.png" alt="Distribusi jumlah pesanan per pembeli: 2.226 pembeli sekali beli, 163 dua kali, 30 tiga kali" loading="lazy">
+          </figure>
+          <p>Hanya 220 dari 2.446 pembeli (9,0%) yang berbelanja lebih dari sekali, tetapi mereka menyumbang 33,5% revenue. Nilai belanja per pembeli repeat sekitar Rp640 ribu, lima kali lipat pembeli yang hanya sekali berbelanja.</p>
+        </div>
+
+        <div class="finding">
+          <p class="q">Pertanyaan 6: retur</p>
+          <h3>Tingkat retur sangat rendah</h3>
+          <p>Hanya 65 dari 8.823 unit yang diretur (0,74%), senilai Rp3,63 juta atau 0,86% revenue. Tingkat retur per unit tertinggi ada di kategori Ember, Baskom &amp; Bak (2,1%) dan Alat Kebersihan (1,8%).</p>
+        </div>
+      </section>
+
+      <section id="dashboard">
+        <h2>Dashboard Power BI</h2>
+        <p>Dashboard dua halaman dibuat dari data yang sudah dibersihkan. Metrik seperti AOV, repeat rate, dan kontribusi revenue pembeli repeat dihitung dengan measure DAX sehingga ikut berubah saat filter bulan atau kategori dipilih.</p>
+        <figure class="chart wide">
+          <a href="../assets/img/shopee/dashboard-sales-overview.png" target="_blank" rel="noopener"><img src="../assets/img/shopee/dashboard-sales-overview.png" alt="Dashboard Shopee Sales Overview" loading="lazy"></a>
+          <figcaption>Halaman 1: Sales Overview. Klik gambar untuk ukuran penuh.</figcaption>
+        </figure>
+        <figure class="chart wide">
+          <a href="../assets/img/shopee/dashboard-product-customer.png" target="_blank" rel="noopener"><img src="../assets/img/shopee/dashboard-product-customer.png" alt="Dashboard Product and Customer Insights" loading="lazy"></a>
+          <figcaption>Halaman 2: Product &amp; Customer Insights.</figcaption>
+        </figure>
+      </section>
+
+      <section id="rekomendasi">
+        <h2>Rekomendasi</h2>
+        <ul class="recs">
+          <li><strong>Jaga stok produk andalan.</strong> Container box CB 150, CB 130, dan CB 70 perlu diprioritaskan karena kehabisan stok di kategori ini langsung berdampak ke revenue.</li>
+          <li><strong>Uji voucher toko untuk menahan turunnya jumlah pesanan.</strong> Bandingkan jumlah pesanan sebelum dan sesudah voucher follower atau voucher minimal belanja diaktifkan.</li>
+          <li><strong>Dorong pembelian ulang.</strong> Kirim voucher pembelian berikutnya atau pesan tindak lanjut setelah pesanan selesai, karena pembeli repeat bernilai lima kali lipat.</li>
+          <li><strong>Sesuaikan operasional dengan jam ramai.</strong> Siapkan tim packing dan admin chat pukul 09.00–13.00, dan jadwalkan iklan atau flash sale di hari Sabtu dan Rabu.</li>
+          <li><strong>Naikkan nilai pesanan kecil.</strong> Tawarkan produk murah seperti karet seal gas atau toples sebagai bundling dengan produk utama.</li>
+          <li><strong>Periksa kualitas kategori dengan retur tertinggi.</strong> Cek barang ember, baskom, dan alat kebersihan sebelum dikirim, serta perkuat pengemasannya.</li>
+        </ul>
+      </section>
+
+      <section id="keterbatasan">
+        <h2>Keterbatasan</h2>
+        <ul>
+          <li>Data hanya berisi pesanan selesai, sehingga tingkat pembatalan tidak bisa dianalisis.</li>
+          <li>Periode tiga bulan belum cukup untuk menyimpulkan pola musiman.</li>
+          <li>Kategori dibuat dari aturan kata kunci nama produk; kategori Lainnya hanya 1,2% revenue.</li>
+        </ul>
+      </section>
+
+      <section id="file">
+        <h2>File project</h2>
+        <div class="files">
+          <a class="btn btn-primary" href="https://github.com/USERNAME/USERNAME.github.io/blob/main/files/Shopee_Sales_Analysis_Darren_Gunawan.ipynb" target="_blank" rel="noopener">Lihat notebook Python</a>
+          <a class="btn btn-ghost" href="../files/Shopee_Sales_Dashboard.pdf">Unduh dashboard (PDF)</a>
+          <a class="btn btn-ghost" href="../files/Shopee_Sales_Dashboard.pbix">Unduh file Power BI</a>
+        </div>
+      </section>
+
+      <nav class="case-nav" aria-label="Project lain">
+        <a href="../index.html#project">Semua project</a>
+        <a href="funnel-cohort.html">Project berikutnya: Funnel dan cohort analysis</a>
+      </nav>
+    </article>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">© 2026 Darren Gunawan. Dibuat dengan HTML dan CSS, di-host di GitHub Pages.</div>
+  </footer>
+
+</body>
+</html>

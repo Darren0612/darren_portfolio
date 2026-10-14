@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Funnel dan Cohort Analysis | Darren Gunawan</title>
+  <meta name="description" content="Studi kasus funnel analysis education startup dan cohort analysis fintech dengan Python dan Power BI.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav" aria-label="Navigasi utama">
+    <div class="wrap">
+      <a class="brand" href="../index.html">Darren Gunawan</a>
+      <ul class="nav-links">
+        <li><a href="../index.html#project">Project</a></li>
+        <li><a href="../index.html#tentang">Tentang</a></li>
+        <li><a href="../index.html#kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="case-head">
+    <div class="wrap">
+      <a class="back" href="../index.html#project">Kembali ke semua project</a>
+      <h1>Funnel dan cohort analysis: education startup dan fintech</h1>
+      <p class="case-lead">Dua business case dengan satu pertanyaan: di mana pertumbuhan bocor? Funnel analysis mencari tahap tempat calon siswa berhenti, sedangkan cohort analysis mengukur seberapa lama user fintech bertahan.</p>
+      <dl class="case-meta">
+        <div><dt>Peran</dt><dd>Data analyst (assignment bootcamp)</dd></div>
+        <div><dt>Data</dt><dd>630.338 leads, 22.466 transaksi</dd></div>
+        <div><dt>Tools</dt><dd>Python, Power BI, DAX</dd></div>
+        <div><dt>Program</dt><dd>Bootcamp Dibimbing</dd></div>
+      </dl>
+    </div>
+  </header>
+
+  <div class="wrap case-layout">
+    <nav class="toc" aria-label="Isi halaman">
+      <p>Isi</p>
+      <ol>
+        <li><a href="#ringkasan">Ringkasan</a></li>
+        <li><a href="#funnel">Funnel analysis</a></li>
+        <li><a href="#cohort">Cohort analysis</a></li>
+        <li><a href="#metrik">Calculated field</a></li>
+        <li><a href="#rekomendasi">Rekomendasi</a></li>
+        <li><a href="#file">File project</a></li>
+      </ol>
+    </nav>
+
+    <article class="article">
+      <section id="ringkasan" class="summary">
+        <h2>Ringkasan</h2>
+        <ul>
+          <li>Hanya 28,3% leads education startup yang akhirnya menjadi user terdaftar.</li>
+          <li>Kebocoran terbesar terjadi setelah free trial: 53% peserta KG &amp; Elementary dan 51% peserta High School tidak mendaftar.</li>
+          <li>27% user fintech berhenti bertransaksi setelah bulan pertama, dan 10% user teratas menyumbang 83% revenue.</li>
+        </ul>
+      </section>
+
+      <section id="funnel">
+        <h2>Funnel analysis: education startup</h2>
+        <p>Data berisi jumlah calon siswa di empat tahap (Leads, Bookings, Free Trials, Register) untuk tiga segmen: KG &amp; Elementary, Middle School, dan High School. Untuk tiap tahap dan segmen saya menghitung conversion dari tahap sebelumnya, conversion dari leads, dan drop-off rate.</p>
+        <figure class="chart wide">
+          <a href="../assets/img/funnel-cohort/dashboard-funnel.png" target="_blank" rel="noopener"><img src="../assets/img/funnel-cohort/dashboard-funnel.png" alt="Dashboard funnel analysis: funnel chart, conversion per segmen, matrix drop-off, dan key insights" loading="lazy"></a>
+          <figcaption>Dashboard funnel di Power BI dengan slicer segmen. Klik gambar untuk ukuran penuh.</figcaption>
+        </figure>
+        <h3>Temuan</h3>
+        <ul>
+          <li>Dari 630.338 leads, hanya 178.560 yang register (28,3%).</li>
+          <li>Drop-off Free Trial ke Register mencapai 53,4% di KG &amp; Elementary dan 51,4% di High School, sedangkan Middle School hanya 16,5%.</li>
+          <li>Middle School menyumbang sekitar 70% registrasi dengan conversion trial ke register 83,5%, sehingga bisa dijadikan benchmark.</li>
+          <li>High School paling lemah secara keseluruhan: hanya 17,3% leads yang register.</li>
+        </ul>
+      </section>
+
+      <section id="cohort">
+        <h2>Cohort analysis: fintech</h2>
+        <p>Data berisi 22.466 transaksi dari 263 user sepanjang 2024. Cohort ditentukan dari bulan transaksi pertama, dan user dianggap aktif jika punya minimal satu transaksi di bulan tersebut. Retention dihitung sebagai weighted average karena ukuran cohort sangat beragam (5 sampai 115 user).</p>
+        <figure class="chart wide">
+          <a href="../assets/img/funnel-cohort/dashboard-cohort.png" target="_blank" rel="noopener"><img src="../assets/img/funnel-cohort/dashboard-cohort.png" alt="Dashboard cohort analysis: heatmap retention, kurva retention, ukuran cohort, dan tabel revenue" loading="lazy"></a>
+          <figcaption>Dashboard cohort di Power BI dengan heatmap retention.</figcaption>
+        </figure>
+        <h3>Temuan</h3>
+        <ul>
+          <li>Retention rata-rata 72,6% di bulan ke-1, 69,7% di bulan ke-3, dan 58,8% di bulan ke-6. Penurunan terbesar terjadi di bulan pertama.</li>
+          <li>Cohort Juli paling loyal (90% bertahan hingga bulan ke-5), sedangkan cohort Februari hanya 26,7% di bulan ke-1 dan hampir seluruh revenue-nya terjadi di bulan pertama.</li>
+          <li>Cohort Desember adalah lonjakan user baru terbesar setelah Januari (51 user), tetapi hanya 37% yang menghasilkan revenue.</li>
+          <li>Revenue sangat terkonsentrasi: 26 user teratas (10%) menyumbang 83,3% revenue.</li>
+        </ul>
+      </section>
+
+      <section id="metrik">
+        <h2>Calculated field</h2>
+        <p>Semua metrik dihitung di Python, lalu metrik utama dibuat ulang sebagai measure DAX agar dinamis terhadap filter slicer di dashboard.</p>
+        <div class="table-scroll">
+          <table class="data-table">
+            <tr><th>Metrik</th><th>Rumus</th></tr>
+            <tr><td>Conversion from previous</td><td>Count ÷ count tahap sebelumnya</td></tr>
+            <tr><td>Drop-off rate</td><td>1 − conversion from previous</td></tr>
+            <tr><td>Retention rate</td><td>Σ user aktif ÷ Σ ukuran cohort</td></tr>
+            <tr><td>Paying retention</td><td>User berbayar ÷ ukuran cohort</td></tr>
+            <tr><td>Revenue per active user</td><td>Revenue ÷ user aktif</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section id="rekomendasi">
+        <h2>Rekomendasi</h2>
+        <ul class="recs">
+          <li><strong>Perbaiki konversi free trial untuk KG dan High School.</strong> Libatkan orang tua di sesi trial KG, fokuskan materi trial High School pada persiapan ujian, dan lakukan follow-up 24–48 jam setelah trial. Jika konversi naik ke 60%, ada tambahan sekitar 13.300 user tanpa menambah leads.</li>
+          <li><strong>Program aktivasi 30 hari pertama di fintech.</strong> Onboarding fitur, pengingat transaksi, dan insentif transaksi kedua, dengan retention bulan ke-1 sebagai KPI utama.</li>
+          <li><strong>Ukur kualitas akuisisi, bukan hanya jumlah user.</strong> Nilai kampanye dari retention bulan ke-1 dan persentase user berbayar.</li>
+          <li><strong>Lindungi user bernilai tinggi.</strong> Beri benefit khusus dan peringatan dini saat aktivitas 10% user teratas menurun.</li>
+        </ul>
+      </section>
+
+      <section id="file">
+        <h2>File project</h2>
+        <div class="files">
+          <a class="btn btn-primary" href="https://github.com/USERNAME/USERNAME.github.io/blob/main/files/Funnel_Cohort_Analysis_Darren_Gunawan.ipynb" target="_blank" rel="noopener">Lihat notebook Python</a>
+          <a class="btn btn-ghost" href="../files/Funnel_Cohort_Presentation.pdf">Unduh presentasi (PDF)</a>
+        </div>
+      </section>
+
+      <nav class="case-nav" aria-label="Project lain">
+        <a href="shopee-sales.html">Project sebelumnya: Analisis penjualan Shopee</a>
+        <a href="../index.html#project">Semua project</a>
+      </nav>
+    </article>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">© 2026 Darren Gunawan. Dibuat dengan HTML dan CSS, di-host di GitHub Pages.</div>
+  </footer>
+
+</body>
+</html>
